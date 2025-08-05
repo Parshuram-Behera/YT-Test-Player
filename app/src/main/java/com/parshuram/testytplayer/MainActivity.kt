@@ -1,9 +1,7 @@
 package com.parshuram.testytplayer
 
 import android.os.Bundle
-import android.webkit.WebSettings
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -23,9 +21,6 @@ class MainActivity : AppCompatActivity() {
         playButton = findViewById(R.id.play_button)
 
         webView.settings.javaScriptEnabled = true
-        webView.settings.domStorageEnabled = true
-        webView.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-        webView.webViewClient = WebViewClient()
 
         playButton.setOnClickListener {
             val inputUrl = urlEditText.text.toString().trim()
@@ -62,11 +57,7 @@ class MainActivity : AppCompatActivity() {
                 """.trimIndent()
 
                 webView.loadDataWithBaseURL(
-                    "https://www.youtube.com",
-                    myHtml,
-                    "text/html",
-                    "UTF-8",
-                    null
+                    "https://www.youtube.com", myHtml, "text/html", "UTF-8", null
                 )
             } else {
                 urlEditText.error = "Invalid YouTube URL!"
