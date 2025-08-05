@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun extractYouTubeId(url: String): String? {
-        val regex = Regex("(?:v=|be/)([a-zA-Z0-9_-]{11})")
+        //val regex = Regex("(?:v=|be/)([a-zA-Z0-9_-]{11})")
+        val regex = Regex("(?:youtube(?:-nocookie)?\\.com/(?:watch\\?v=|embed/|v/|shorts/|live/)|youtu\\.be/)([\\w-]{11})")
         val match = regex.find(url)
         return match?.groups?.get(1)?.value
     }
